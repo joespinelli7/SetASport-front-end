@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import paddle from '../images/paddle.png'
+import {Link} from 'react-router-dom'
 
 const styles = {
   root: {
@@ -29,8 +30,13 @@ function Navbar(props) {
       <AppBar position="static">
         <Toolbar>
           <img src={paddle} alt="logo" />
-          <Typography variant="h6" color="inherit" className={classes.grow}>
+          <Link to="/" class="item">
+          <Typography variant="h4" color="inherit" className={classes.grow}>
             <Button color="inherit">Home</Button>
+          </Typography>
+          </Link>
+          <Typography variant="h4" color="inherit" className={classes.grow}>
+            <Button color="inherit"><Link to="/map">Map</Link></Button>
           </Typography>
           <Button color="inherit">Logout</Button>
         </Toolbar>
