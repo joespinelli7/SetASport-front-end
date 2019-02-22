@@ -21,6 +21,16 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    fetch(`${API}/courts`)
+    .then(res => res.json())
+    .then(courtArr => {
+      this.setState({
+        allCourts: courtArr
+      })
+    })
+  }
+
   render() {
     return (
       <div>

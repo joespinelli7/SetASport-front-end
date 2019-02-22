@@ -11,7 +11,7 @@ class MapDisplay extends React.Component {
 
     this.state={
       center: [-77.031964, 38.8907338],
-      zoom: [12.8]
+      zoom: [12.8],
     }
   }
 
@@ -27,10 +27,20 @@ class MapDisplay extends React.Component {
         center={this.state.center}
         zoom={this.state.zoom}
       >
-
+      <Layer type="circle" id="marker" paint={{
+         'circle-color': "blue",
+         'circle-stroke-width': 1,
+         'circle-stroke-color': '#fff',
+         'circle-stroke-opacity': 1
+      }}>
+        {this.props.allCourts.map(courtObj =>
+          <Feature coordinates={[courtObj.longitude, courtObj.latitude]}/>
+        )}
+      </Layer>
       </Map>
     )
   }
 }
+// <Feature coordinates={[-77.0465759, 38.8949789]}/>
 
 export default MapDisplay

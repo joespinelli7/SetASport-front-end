@@ -30,7 +30,7 @@ function Navbar(props) {
       <AppBar position="static">
         <Toolbar>
           <img src={paddle} alt="logo" />
-          <Link to="/" class="item">
+          <Link to="/" className="item">
           <Typography variant="h4" color="inherit" className={classes.grow}>
             <Button color="inherit">Home</Button>
           </Typography>
