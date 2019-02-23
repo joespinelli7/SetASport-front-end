@@ -31,12 +31,14 @@ function Navbar(props) {
       <AppBar position="static">
         <Toolbar>
           <img src={paddle} alt="logo" />
-          <Button component={Link} color="inherit" to="/">
-            Home
-          </Button>
-          <Button component={Link} color="inherit" to="/map">
-            Map
-          </Button>
+          <Typography variant="h6" color="inherit" className={classes.grow}>
+            <Button component={Link} color="inherit" to="/">
+              Home
+            </Button>
+            <Button component={Link} color="inherit" to="/map">
+              Map
+            </Button>
+          </Typography>
           <Button color="inherit">Logout</Button>
         </Toolbar>
       </AppBar>
