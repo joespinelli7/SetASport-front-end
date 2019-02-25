@@ -43,8 +43,8 @@ const CourtCard = (props) => {
       </CardContent>
       <CardActions>
         <Button size="small" color="primary">Play here</Button>
-        <Button size="small" color="primary">Close</Button>
         <Button size="small" color="primary">Players here:</Button>
+        <Button size="small" color="secondary" onClick={() => props.clearFeature(props.featureToShow)}>Close</Button>
       </CardActions>
     </Card>
   );
