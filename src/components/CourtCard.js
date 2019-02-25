@@ -38,13 +38,13 @@ const CourtCard = (props) => {
         <Typography className={classes.pos} color="textSecondary">
           Address:
         </Typography>
-        <Typography component="p">
+        <Typography component="h4">
           {props.featureToShow.address}
         </Typography>
       </CardContent>
       <Divider />
       <CardActions>
-        <Button size="small" color="primary">Play here</Button>
+        <Button size="small" color="primary">Check in</Button>
         <Button size="small" color="primary">Current players here</Button>
         <Button size="small" color="secondary" onClick={() => props.clearFeature(props.featureToShow)}>Close</Button>
       </CardActions>
