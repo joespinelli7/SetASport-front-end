@@ -39,7 +39,7 @@ function Navbar(props) {
               Map
             </Button>
           </Typography>
-          <Button color="inherit">Logout</Button>
+          <Button color="inherit">Sign out</Button>
         </Toolbar>
       </AppBar>
     </div>

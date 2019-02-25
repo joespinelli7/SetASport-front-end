@@ -26,9 +26,7 @@ const styles = {
 };
 
 const CourtCard = (props) => {
-  console.log(props.featureToShow)
   const { classes } = props;
-  const bull = <span className={classes.bullet}>•</span>;
   return (
     <Card className={classes.card}>
       <CardContent>

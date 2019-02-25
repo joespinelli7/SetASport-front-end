@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import LogIn from './components/LogIn'
+import SignIn from './components/SignIn'
 import MapDisplay from './containers/MapDisplay'
 import {Route, Switch} from 'react-router-dom'
 import Navbar from './containers/Navbar'
