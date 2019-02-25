@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import SignIn from './components/SignIn'
+import LogIn from './components/LogIn'
 import MapDisplay from './containers/MapDisplay'
 import {Route, Switch} from 'react-router-dom'
 import Navbar from './containers/Navbar'
@@ -16,11 +16,12 @@ class App extends Component {
     this.state={
       myFavCourts: [],
       allCourts: [],
-      current_user: false,
+      current_user: null,
       players: []
     }
   }
 
+  /// Component Lifecycle
   componentDidMount() {
     fetch(`${API}/courts`)
     .then(res => res.json())
