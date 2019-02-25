@@ -16,7 +16,7 @@ class MapDisplay extends React.Component {
 
     this.state={
       center: [-77.031964, 38.8907338],
-      zoom: [12.8],
+      zoom: [12],
       courtDetails: {}
     }
   }
@@ -24,7 +24,8 @@ class MapDisplay extends React.Component {
   handleOnClick = (focusObj) => {
     this.setState({
       courtDetails: focusObj,
-      center: [focusObj.longitude, focusObj.latitude]
+      center: [focusObj.longitude, focusObj.latitude],
+      zoom: [13]
     })
   }
 
