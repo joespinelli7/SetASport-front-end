@@ -21,14 +21,16 @@ class MapDisplay extends React.Component {
     }
   }
 
+  //renders courtCard component and resizes map
   handleOnClick = (focusObj) => {
     this.setState({
       courtDetails: focusObj,
       center: [focusObj.longitude, focusObj.latitude],
-      zoom: [13]
+      zoom: [15]
     })
   }
 
+  //clears CourtCard off page
   handleClearCourt = () => {
     this.setState({
       courtDetails: {}

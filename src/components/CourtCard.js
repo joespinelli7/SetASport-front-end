@@ -26,6 +26,7 @@ const styles = {
 };
 
 const CourtCard = (props) => {
+  console.log(props.featureToShow)
   const { classes } = props;
   return (
     <Card className={classes.card}>
@@ -43,7 +44,7 @@ const CourtCard = (props) => {
       <Divider />
       <CardActions>
         <Button size="small" color="primary">Check in</Button>
-        <Button size="small" color="primary">Current players here</Button>
+        <Button size="small" color="primary" onClick={() => props.featureToShow}>Current players here</Button>
         <Button size="small" color="secondary" onClick={() => props.clearFeature(props.featureToShow)}>Close</Button>
       </CardActions>
     </Card>
