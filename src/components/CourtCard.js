@@ -6,6 +6,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
 
 const styles = {
   card: {
@@ -41,9 +42,10 @@ const CourtCard = (props) => {
           {props.featureToShow.address}
         </Typography>
       </CardContent>
+      <Divider />
       <CardActions>
         <Button size="small" color="primary">Play here</Button>
-        <Button size="small" color="primary">Players here:</Button>
+        <Button size="small" color="primary">Current players here</Button>
         <Button size="small" color="secondary" onClick={() => props.clearFeature(props.featureToShow)}>Close</Button>
       </CardActions>
     </Card>
