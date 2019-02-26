@@ -80,10 +80,10 @@ const CourtCard = (props) => {
             <Typography>Player(s):</Typography>
             <Typography>
               {props.featureToShow.users.map(user =>
-                <h4 key={user.id}>
-                  {user.full_name}
+                <div key={user.id}>
+                  <p>{user.full_name}</p>
                   <hr />
-                </h4>
+                </div>
               )}
             </Typography>
             </CardContent>
