@@ -7,10 +7,15 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
+import Collapse from '@material-ui/core/Collapse';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import IconButton from '@material-ui/core/IconButton';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import classnames from 'classnames';
 
-const styles = {
+const styles = theme => ({
   card: {
-    minWidth: 275,
+    maxWidth: 500,
   },
   bullet: {
     display: 'inline-block',
@@ -23,10 +28,23 @@ const styles = {
   pos: {
     marginBottom: 12,
   },
-};
+  actions: {
+    display: 'flex',
+  },
+  expand: {
+    transform: 'rotate(0deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
+  },
+});
 
 const CourtCard = (props) => {
-  console.log(props.featureToShow)
+  console.log(props.featureToShow.users)
   const { classes } = props;
   return (
     <Card className={classes.card}>
@@ -44,7 +62,32 @@ const CourtCard = (props) => {
       <Divider />
       <CardActions>
         <Button size="small" color="primary">Check in</Button>
-        <Button size="small" color="primary" onClick={() => props.featureToShow}>Current players here</Button>
+        <h3>Current Players Here:</h3>
+        <CardActions className={classes.actions} disableActionSpacing>
+          <IconButton
+              className={classnames(classes.expand, {
+                [classes.expandOpen]: props.expanded,
+              })}
+              onClick={props.handleExpandClick}
+              aria-expanded={props.expanded}
+              aria-label="Show more"
+            >
+            <ExpandMoreIcon />
+          </IconButton>
+        </CardActions>
+        <Collapse in={props.expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography paragraph>Players:</Typography>
+            <Typography paragraph>
+              {props.featureToShow.users.map(user =>
+                <div>
+                  {user.full_name}
+                  <hr />
+                </div>
+              )}
+            </Typography>
+            </CardContent>
+       </Collapse>
         <Button size="small" color="secondary" onClick={() => props.clearFeature(props.featureToShow)}>Close</Button>
       </CardActions>
     </Card>
@@ -56,3 +99,5 @@ CourtCard.propTypes = {
 };
 
 export default withStyles(styles)(CourtCard);
+
+// <Button size="small" color="primary" onClick={() => props.featureToShow}>Current players here</Button>

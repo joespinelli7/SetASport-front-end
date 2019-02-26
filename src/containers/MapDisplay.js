@@ -17,9 +17,15 @@ class MapDisplay extends React.Component {
     this.state={
       center: [-77.031964, 38.8907338],
       zoom: [12],
-      courtDetails: {}
+      courtDetails: {},
+      expanded: false
     }
   }
+
+  //handles Current players here btn by dropping down a list of all players playing at that location
+  handleExpandClick = () => {
+    this.setState(state => ({ expanded: !state.expanded }));
+  };
 
   //renders courtCard component and resizes map
   handleOnClick = (focusObj) => {
@@ -51,7 +57,16 @@ class MapDisplay extends React.Component {
         zoom={this.state.zoom}
       >
       <div className="featureCard">
-        {this.state.courtDetails.name ? <CourtCard featureToShow={this.state.courtDetails} clearFeature={this.handleClearCourt}/> : null}
+        {this.state.courtDetails.name ?
+          <CourtCard
+            featureToShow={this.state.courtDetails}
+            clearFeature={this.handleClearCourt}
+            expanded={this.state.expanded}
+            handleExpandClick={this.handleExpandClick}
+          />
+          :
+          null
+        }
       </div>
       <Layer type="circle" id="marker" paint={{
          'circle-color': "blue",

@@ -31,6 +31,7 @@ function Navbar(props) {
       <AppBar position="static">
         <Toolbar>
           <img src={paddle} alt="logo" />
+          <h3>SetASport</h3>
           <Typography variant="h6" color="inherit" className={classes.grow}>
             <Button component={Link} color="inherit" to="/">
               Home
