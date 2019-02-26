@@ -33,7 +33,7 @@ function Navbar(props) {
           <img src={paddle} alt="logo" />
           <h3>SetASport</h3>
           <Typography variant="h6" color="inherit" className={classes.grow}>
-            <Button component={Link} color="inherit" to="/">
+            <Button component={Link} color="inherit" to="/home">
               Home
             </Button>
             <Button component={Link} color="inherit" to="/map">

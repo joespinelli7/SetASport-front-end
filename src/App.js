@@ -44,7 +44,11 @@ class App extends Component {
               />
             )
           }} />
-          <Route component={Home}/>
+          <Route path="/home" render={(props) => {
+            return (<Home />
+            )
+          }} />
+          <Route component={SignIn} />
         </Switch>
       </div>
     );
