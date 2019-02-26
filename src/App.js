@@ -23,7 +23,7 @@ class App extends Component {
     }
   }
 
-  /// Component Lifecycle for courts
+///// Component Lifecycle for courts and users
   componentDidMount() {
     fetch(`${API}/courts`)
     .then(res => res.json())
@@ -41,7 +41,7 @@ class App extends Component {
     })
   }
 
-  ///// Changes state in App to reflect user's typed in username and password
+///// Changes state in App to reflect user's typed in username and password
   setUserState = (e) => {
     this.setState({
       username: e.target.value
@@ -53,8 +53,9 @@ class App extends Component {
       password: e.target.value
     })
   }
-  /////
+/////
 
+///// POST fetch to backend to set current_user state as player that is signed in
   handleUserSignIn = (e) => {
     fetch(`${API}/signin`, {
       method: "POST",
@@ -69,11 +70,16 @@ class App extends Component {
     })
     .then(res => res.json())
     .then(player => {
-      this.setState({
-        current_user: player
-      })
+      if (player === null) {
+        alert("Username/password combination does not exist!")
+      } else {
+        this.setState({
+          current_user: player
+        })
+      }
     })
   }
+/////
 
   render() {
     return (
