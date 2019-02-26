@@ -77,13 +77,13 @@ const CourtCard = (props) => {
         </CardActions>
         <Collapse in={props.expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>Players:</Typography>
-            <Typography paragraph>
+            <Typography>Player(s):</Typography>
+            <Typography>
               {props.featureToShow.users.map(user =>
-                <div>
+                <h4 key={user.id}>
                   {user.full_name}
                   <hr />
-                </div>
+                </h4>
               )}
             </Typography>
             </CardContent>
