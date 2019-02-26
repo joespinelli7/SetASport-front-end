@@ -1,4 +1,5 @@
 import React from 'react';
+import {Route, Switch, Redirect, Link} from 'react-router-dom'
 import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -79,6 +80,7 @@ class SignIn extends React.Component {
               color="primary"
               className={classes.submit}
             >
+            {this.props.current_user ? <Redirect to="/home" /> : null}
               Sign in
             </Button>
           </form>

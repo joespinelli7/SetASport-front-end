@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import SignIn from './components/SignIn'
 import MapDisplay from './containers/MapDisplay'
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, Redirect} from 'react-router-dom'
 import Navbar from './containers/Navbar'
 import Home from './components/Home'
 
@@ -104,6 +104,7 @@ class App extends Component {
               setUser={this.setUserState}
               setPass={this.setPassState}
               handleUserSignIn={this.handleUserSignIn}
+              current_user={this.state.current_user}
               />
             )
           }} />
