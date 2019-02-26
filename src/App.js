@@ -17,7 +17,10 @@ class App extends Component {
       myFavCourts: [],
       allCourts: [],
       current_user: null,
-      players: []
+      players: [],
+      username: "",
+      password: "",
+      userLoggedIn: false
     }
   }
 
@@ -31,6 +34,20 @@ class App extends Component {
       })
     })
   }
+
+  ///// Changes state in App to reflect user's typed in username and password
+  setUserState = (e) => {
+    this.setState({
+      username: e.target.value
+    })
+  }
+
+  setPassState = (e) => {
+    this.setState({
+      password: e.target.value
+    })
+  }
+  /////
 
   render() {
     return (
@@ -48,7 +65,15 @@ class App extends Component {
             return (<Home />
             )
           }} />
-          <Route component={SignIn} />
+          <Route path="/" render={(props) => {
+            return (<SignIn
+              username={this.state.username}
+              password={this.state.password}
+              setUser={this.setUserState}
+              setPass={this.setPassState}
+              />
+            )
+          }} />
         </Switch>
       </div>
     );

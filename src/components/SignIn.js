@@ -46,14 +46,6 @@ const styles = theme => ({
 });
 
 class SignIn extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state={
-      username: "",
-      password: ""
-    }
-  }
 
   render() {
     const { classes } = this.props
@@ -70,11 +62,11 @@ class SignIn extends React.Component {
           <form className={classes.form}>
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="email">Username</InputLabel>
-              <Input id="email" name="email" autoComplete="email" autoFocus />
+              <Input onChange={(e) => this.props.setUser(e)} id="email" name="email" autoComplete="email" autoFocus />
             </FormControl>
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="password">Password</InputLabel>
-              <Input name="password" type="password" id="password" autoComplete="current-password" />
+              <Input onChange={(e) => this.props.setPass(e)} name="password" type="password" id="password" autoComplete="current-password" />
             </FormControl>
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
