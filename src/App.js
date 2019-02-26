@@ -20,17 +20,23 @@ class App extends Component {
       players: [],
       username: "",
       password: "",
-      userLoggedIn: false
     }
   }
 
-  /// Component Lifecycle
+  /// Component Lifecycle for courts
   componentDidMount() {
     fetch(`${API}/courts`)
     .then(res => res.json())
     .then(courtArr => {
       this.setState({
         allCourts: courtArr
+      })
+    })
+    fetch(`${API}/users`)
+    .then(res => res.json())
+    .then(usersArr => {
+      this.setState({
+        players: usersArr
       })
     })
   }
@@ -48,6 +54,26 @@ class App extends Component {
     })
   }
   /////
+
+  handleUserSignIn = (e) => {
+    fetch(`${API}/signin`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password
+      })
+    })
+    .then(res => res.json())
+    .then(player => {
+      this.setState({
+        current_user: player
+      })
+    })
+  }
 
   render() {
     return (
@@ -71,6 +97,7 @@ class App extends Component {
               password={this.state.password}
               setUser={this.setUserState}
               setPass={this.setPassState}
+              handleUserSignIn={this.handleUserSignIn}
               />
             )
           }} />

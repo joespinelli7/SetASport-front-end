@@ -59,7 +59,7 @@ class SignIn extends React.Component {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form}>
+          <form className={classes.form} onSubmit={(e) => {e.preventDefault(); this.props.handleUserSignIn(e)}}>
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="email">Username</InputLabel>
               <Input onChange={(e) => this.props.setUser(e)} id="email" name="email" autoComplete="email" autoFocus />
