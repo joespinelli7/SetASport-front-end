@@ -17,7 +17,7 @@ class App extends Component {
       myFavCourts: [],
       allCourts: [],
       current_user: null,
-      players: [],
+      allPlayers: [],
       username: "",
       password: "",
     }
@@ -36,10 +36,11 @@ class App extends Component {
     .then(res => res.json())
     .then(usersArr => {
       this.setState({
-        players: usersArr
+        allPlayers: usersArr
       })
     })
   }
+/////
 
 ///// Changes state in App to reflect user's typed in username and password
   setUserState = (e) => {
@@ -98,7 +99,7 @@ class App extends Component {
           <Switch>
             <Route path="/map" render={(props) => {
               return (<MapDisplay
-                players={this.state.players}
+                allPlayers={this.state.allPlayers}
                 current_user={this.state.current_user}
                 allCourts={this.state.allCourts}
                 />
