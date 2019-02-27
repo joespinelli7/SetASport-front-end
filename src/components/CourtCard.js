@@ -83,6 +83,16 @@ class CourtCard extends React.Component {
     })
   }
 
+  onCheckInClick = (e) => {
+    e.preventDefault()
+    let checkCourt = this.props.checkIfAtCourt()
+    if (!checkCourt) {
+      this.checkinLocation(this.props.featureToShow, this.props.current_user)
+    } else {
+      alert("Already checked in!")
+    }
+  }
+
   render() {
     const { classes } = this.props;
     console.log(this.props.featureToShow)
@@ -101,7 +111,7 @@ class CourtCard extends React.Component {
         </CardContent>
         <Divider />
         <CardActions>
-          <Button size="small" color="primary" onClick={(e) => {e.preventDefault(); this.checkinLocation(this.props.featureToShow, this.props.current_user)}}>Check in</Button>
+          <Button size="small" color="primary" onClick={this.onCheckInClick}>Check in</Button>
           <h3>Current Players Here:</h3>
           <CardActions className={classes.actions} disableActionSpacing>
             <IconButton

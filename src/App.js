@@ -23,6 +23,21 @@ class App extends Component {
     }
   }
 
+  checkIfAtCourt = () => {
+    const hey = this
+    const courts = this.state.allCourts.filter(court => {
+      const users = court.users.filter(user => user.id === this.state.current_user.id)
+      if (users.length > 0) {
+        return users
+      }
+    })
+    if (courts.length > 0) {
+      return true
+    } else {
+      return false
+    }
+  }
+
 ///// Component Lifecycle for courts and users
   componentDidMount() {
     fetch(`${API}/courts`)
@@ -99,6 +114,7 @@ class App extends Component {
           <Switch>
             <Route path="/map" render={(props) => {
               return (<MapDisplay
+                checkIfAtCourt={this.checkIfAtCourt}
                 allPlayers={this.state.allPlayers}
                 current_user={this.state.current_user}
                 allCourts={this.state.allCourts}

@@ -64,6 +64,7 @@ class MapDisplay extends React.Component {
             clearFeature={this.handleClearCourt}
             expanded={this.state.expanded}
             handleExpandClick={this.handleExpandClick}
+            checkIfAtCourt={this.props.checkIfAtCourt}
           />
           :
           null
