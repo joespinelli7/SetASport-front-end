@@ -1,9 +1,10 @@
 import React from 'react'
+import {Route, Link} from 'react-router-dom'
 
 const Home = (props) => {
   return(
     <div>
-      Home page
+      <Link to="/signin">Signin</Link>
     </div>
   )
 }

@@ -36,11 +36,19 @@ function Navbar(props) {
             <Button component={Link} color="inherit" to="/home">
               Home
             </Button>
-            <Button component={Link} color="inherit" to="/map">
-              Map
-            </Button>
+            { props.current_user ?
+                <Button component={Link} color="inherit" to="/map">
+                  Map
+                </Button>
+              :
+              null
+            }
           </Typography>
-          <Button color="inherit">Sign out</Button>
+          { props.current_user ?
+            <Button color="inherit" onClick={() => props.logout()}>Sign out</Button>
+            :
+            null
+          }
         </Toolbar>
       </AppBar>
     </div>

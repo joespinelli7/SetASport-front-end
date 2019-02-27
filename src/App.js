@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import SignIn from './components/SignIn'
 import MapDisplay from './containers/MapDisplay'
-import {Route, Switch, Redirectisf} from 'react-router-dom'
+import {Route, Switch, Redirect} from 'react-router-dom'
 import Navbar from './containers/Navbar'
 import Home from './components/Home'
 
@@ -81,12 +81,20 @@ class App extends Component {
   }
 /////
 
+/////Log user out
+  handleUserSignOut = () => {
+    this.setState({
+      current_user: null
+    })
+  }
+/////
+
   render() {
     return (
       <div className="pages">
       { this.state.current_user ?
         <div>
-          <Navbar />
+          <Navbar current_user={this.state.current_user} logout={this.handleUserSignOut}/>
           <Switch>
             <Route path="/map" render={(props) => {
               return (<MapDisplay
@@ -95,16 +103,14 @@ class App extends Component {
                 />
               )
             }} />
-            <Route path="/home" render={(props) => {
-              return (<Home />
-              )
-            }} />
+            <Route component={Home} />
           </Switch>
         </div>
         :
         <div>
-          <Navbar />
+          <Navbar current_user={this.state.current_user}/>
           <Switch>
+            <Route path="/home" component={Home}/>
             <Route path="/" render={(props) => {
               return (<SignIn
                 username={this.state.username}
