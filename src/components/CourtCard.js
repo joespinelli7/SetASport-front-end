@@ -43,7 +43,16 @@ const styles = theme => ({
   },
 });
 
+const checkinLocation = (location) => {
+  (location.users.includes(location.current_user) ?
+    alert("Already checked in")
+    :
+    location.users.push(location.current_user)
+  )
+}
+
 const CourtCard = (props) => {
+  console.log(props.featureToShow.users)
   const { classes } = props;
   return (
     <Card className={classes.card}>
@@ -60,7 +69,7 @@ const CourtCard = (props) => {
       </CardContent>
       <Divider />
       <CardActions>
-        <Button size="small" color="primary">Check in</Button>
+        <Button size="small" color="primary" onClick={(e) => {e.preventDefault(); checkinLocation(props.featureToShow)}}>Check in</Button>
         <h3>Current Players Here:</h3>
         <CardActions className={classes.actions} disableActionSpacing>
           <IconButton

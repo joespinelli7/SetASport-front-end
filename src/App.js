@@ -98,6 +98,7 @@ class App extends Component {
           <Switch>
             <Route path="/map" render={(props) => {
               return (<MapDisplay
+                players={this.state.players}
                 current_user={this.state.current_user}
                 allCourts={this.state.allCourts}
                 />
