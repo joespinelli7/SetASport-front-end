@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import SignIn from './components/SignIn'
 import MapDisplay from './containers/MapDisplay'
-import {Route, Switch, Redirect} from 'react-router-dom'
+import {Route, Switch, Redirectisf} from 'react-router-dom'
 import Navbar from './containers/Navbar'
 import Home from './components/Home'
 
@@ -83,32 +83,42 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Navbar />
-        <Switch>
-          <Route path="/map" render={(props) => {
-            return (<MapDisplay
-              current_user={this.state.current_user}
-              allCourts={this.state.allCourts}
-              />
-            )
-          }} />
-          <Route path="/home" render={(props) => {
-            return (<Home />
-            )
-          }} />
-          <Route path="/" render={(props) => {
-            return (<SignIn
-              username={this.state.username}
-              password={this.state.password}
-              setUser={this.setUserState}
-              setPass={this.setPassState}
-              handleUserSignIn={this.handleUserSignIn}
-              current_user={this.state.current_user}
-              />
-            )
-          }} />
-        </Switch>
+      <div className="pages">
+      { this.state.current_user ?
+        <div>
+          <Navbar />
+          <Switch>
+            <Route path="/map" render={(props) => {
+              return (<MapDisplay
+                current_user={this.state.current_user}
+                allCourts={this.state.allCourts}
+                />
+              )
+            }} />
+            <Route path="/home" render={(props) => {
+              return (<Home />
+              )
+            }} />
+          </Switch>
+        </div>
+        :
+        <div>
+          <Navbar />
+          <Switch>
+            <Route path="/" render={(props) => {
+              return (<SignIn
+                username={this.state.username}
+                password={this.state.password}
+                setUser={this.setUserState}
+                setPass={this.setPassState}
+                handleUserSignIn={this.handleUserSignIn}
+                current_user={this.state.current_user}
+                />
+              )
+            }} />
+          </Switch>
+        </div>
+      }
       </div>
     );
   }
