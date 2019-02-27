@@ -103,7 +103,12 @@ class App extends Component {
                 />
               )
             }} />
-            <Route component={Home} />
+            <Route path="/" render={(props) => {
+              return (<Home
+                current_user={this.state.current_user}
+                />
+              )
+            }}/>
           </Switch>
         </div>
         :
