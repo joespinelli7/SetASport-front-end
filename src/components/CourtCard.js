@@ -58,6 +58,8 @@ class CourtCard extends React.Component {
     }
   }
 
+/////checks user into a location by sending POST fetch to backend and creating a new user instance
+/////inside that specific court if the user isn't already checked into another location
   checkinLocation = (location, user) => {
     console.log(location, user)
     fetch('http://localhost:3001/user_courts', {
@@ -73,29 +75,28 @@ class CourtCard extends React.Component {
     })
     .then(res => res.json())
     .then(playerAdded => {
-      if (playerAdded.error) {
-        alert("Already checked in!")
-      } else {
-        this.setState({
-          players: location.users.push(user)
-        })
-      }
+      this.setState({
+        players: location.users.push(user)
+      })
     })
   }
+/////
 
+/////onClick of check in btn checks to see if user is already checked in at any other courts
+/////and if not then sends to checkinLocation to change state with player checked in
   onCheckInClick = (e) => {
     e.preventDefault()
     let checkCourt = this.props.checkIfAtCourt()
     if (!checkCourt) {
       this.checkinLocation(this.props.featureToShow, this.props.current_user)
     } else {
-      alert("Already checked in!")
+      alert(`You're already checked in at ${this.props.checkIfAtCourt()[0].name} court!`)
     }
   }
+/////
 
   render() {
     const { classes } = this.props;
-    console.log(this.props.featureToShow)
     return (
       <Card className={classes.card}>
         <CardContent>

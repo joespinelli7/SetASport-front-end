@@ -23,8 +23,10 @@ class App extends Component {
     }
   }
 
+///// checks if user is already checked in at a court and if so returns true and passes it down as a props
+///// to CourtCard where courtCard utilizes it in onCheckInClick(line 86)
+///// filter creates a new array with all elements that pass the test
   checkIfAtCourt = () => {
-    const hey = this
     const courts = this.state.allCourts.filter(court => {
       const users = court.users.filter(user => user.id === this.state.current_user.id)
       if (users.length > 0) {
@@ -32,7 +34,7 @@ class App extends Component {
       }
     })
     if (courts.length > 0) {
-      return true
+      return courts
     } else {
       return false
     }
