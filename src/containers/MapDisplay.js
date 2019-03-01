@@ -52,18 +52,20 @@ class MapDisplay extends React.Component {
 /////changes state of hover to in
   changeHoverStateIn = (courtObj) => {
     this.setState({
-      hover: true
+      hover: true,
+      courtDetails: courtObj
     })
-    console.log(this.state.hover)
+    // console.log(this.state.hover)
+    // console.log(this.state.courtDetails)
   }
 /////
 
 /////changes state of hover to out
   changeHoverStateOut = () => {
     this.setState({
-      hover: false,
+      hover: false
     })
-    console.log(this.state.hover)
+    // console.log(this.state.hover)
   }
 /////
 
@@ -106,7 +108,7 @@ class MapDisplay extends React.Component {
             onClick={() =>
               {this.handleOnClick(courtObj)}
             }
-            onMouseEnter={() => this.changeHoverStateIn()}
+            onMouseEnter={(courtObj) => this.changeHoverStateIn(courtObj)}
             onMouseLeave={() => this.changeHoverStateOut()}
           />
         )}
@@ -118,12 +120,16 @@ class MapDisplay extends React.Component {
 
 export default MapDisplay
 
-//for hover
+//for hover inbetween line 116 and 117
 // {this.state.hover ?
 //   <div>
-//   {console.log("hey")}
-//   <Popup latitude={38.909034} longitude={77.0215468} closeButton={true} closeOnClick={false} anchor="top">
-//     <div>You are here</div>
+//   <Popup
+//     coordinates={[77.0215468, 38.909034]}
+//     offset={{ 'bottom-left': [12, -38],  'bottom': [0, -38], 'bottom-right': [-12, -38] }}
+//   >
+//     <div>
+//     {<CourtName courtObj={this.state.courtDetails}/>}
+//     </div>
 //   </Popup>
 //   </div>
 //   :

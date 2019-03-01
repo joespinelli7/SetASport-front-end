@@ -39,6 +39,7 @@ class App extends Component {
       return false
     }
   }
+/////
 
 ///// Component Lifecycle for courts and users
   componentDidMount() {

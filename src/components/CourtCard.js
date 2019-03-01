@@ -97,6 +97,9 @@ class CourtCard extends React.Component {
 
   render() {
     const { classes } = this.props;
+    console.log(this.props.featureToShow.users)
+    console.log(this.props.current_user)
+    let newArr = this.props.featureToShow.users.map(user => user.id)
     return (
       <Card className={classes.card}>
         <CardContent>
@@ -112,7 +115,13 @@ class CourtCard extends React.Component {
         </CardContent>
         <Divider />
         <CardActions>
-          <Button size="small" color="primary" onClick={this.onCheckInClick}>Check in</Button>
+          <div>
+          {newArr.includes(this.props.current_user.id) ?
+            <Button size="small" color="primary" onClick={this.onCheckInClick}>Check out</Button>
+          :
+            <Button size="small" color="primary" onClick={this.onCheckInClick}>Check in</Button>
+          }
+          </div>
           <h3>Current Players Here:</h3>
           <CardActions className={classes.actions} disableActionSpacing>
             <IconButton
