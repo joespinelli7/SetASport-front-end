@@ -1,7 +1,7 @@
 import React from 'react'
 import {Route, Link} from 'react-router-dom'
 
-const Home = (props) => {
+const About = (props) => {
   return(
     <div>
       {props.current_user ?
@@ -13,4 +13,4 @@ const Home = (props) => {
   )
 }
 
-export default Home
+export default About

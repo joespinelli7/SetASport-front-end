@@ -13,6 +13,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+import './Signin.css'
 
 const styles = theme => ({
   main: {
@@ -51,7 +52,12 @@ class SignIn extends React.Component {
   render() {
     const { classes } = this.props
     return (
-      <main className={classes.main}>
+      <main id="signin" className={classes.main}>
+      <header>
+        <video loop muted autoPlay playsinline poster="https://zippy.gfycat.com/PalatableMadeupDrake.webm">
+          <source src="https://zippy.gfycat.com/PalatableMadeupDrake.webm" type="video/mp4"/>
+        </video>
+      </header>
         <CssBaseline />
         <Paper className={classes.paper}>
           <Avatar className={classes.avatar}>

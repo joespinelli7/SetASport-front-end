@@ -1,8 +1,10 @@
 import React from 'react'
-import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
+import ReactMapboxGl, { Layer, Feature, Popup } from "react-mapbox-gl";
+// import ReactMapGL, {Popup} from 'react-map-gl';
 import Button from '@material-ui/core/Button';
 import CourtCard from '../components/CourtCard'
 import './MapDisplay.css';
+import CourtName from '../components/CourtName'
 
 const Map = ReactMapboxGl({
    accessToken: process.env.REACT_APP_SETASPORT_ACCESS_KEY
@@ -18,16 +20,18 @@ class MapDisplay extends React.Component {
       center: [-77.031964, 38.8907338],
       zoom: [12],
       courtDetails: {},
-      expanded: false
+      expanded: false,
+      hover: false
     }
   }
 
-  //handles Current players here btn by dropping down a list of all players playing at that location
+/////handles Current players here btn by dropping down a list of all players playing at that location
   handleExpandClick = () => {
     this.setState(state => ({ expanded: !state.expanded }));
   };
+/////
 
-  //renders courtCard component and resizes map
+/////renders courtCard component and resizes map
   handleOnClick = (focusObj) => {
     this.setState({
       courtDetails: focusObj,
@@ -35,14 +39,33 @@ class MapDisplay extends React.Component {
       zoom: [15]
     })
   }
+/////
 
-  //clears CourtCard off page
+/////clears CourtCard off page
   handleClearCourt = () => {
     this.setState({
       courtDetails: {}
     })
-    console.log(this.state.courtDetails)
   }
+/////
+
+/////changes state of hover to in
+  changeHoverStateIn = (courtObj) => {
+    this.setState({
+      hover: true
+    })
+    console.log(this.state.hover)
+  }
+/////
+
+/////changes state of hover to out
+  changeHoverStateOut = () => {
+    this.setState({
+      hover: false,
+    })
+    console.log(this.state.hover)
+  }
+/////
 
   render() {
     return(
@@ -83,6 +106,8 @@ class MapDisplay extends React.Component {
             onClick={() =>
               {this.handleOnClick(courtObj)}
             }
+            onMouseEnter={() => this.changeHoverStateIn()}
+            onMouseLeave={() => this.changeHoverStateOut()}
           />
         )}
       </Layer>
@@ -91,8 +116,20 @@ class MapDisplay extends React.Component {
   }
 }
 
+export default MapDisplay
+
+//for hover
+// {this.state.hover ?
+//   <div>
+//   {console.log("hey")}
+//   <Popup latitude={38.909034} longitude={77.0215468} closeButton={true} closeOnClick={false} anchor="top">
+//     <div>You are here</div>
+//   </Popup>
+//   </div>
+//   :
+//   null
+// }
+
 // <CourtCard courtObj={courtObj} clickFeature={this.clickFeature}/>
 // <Feature coordinates={[-77.0465759, 38.8949789]}/>
 // <CourtCard courtObJId={courtObj.id} showCard={this.state.courtPop}/>
-
-export default MapDisplay

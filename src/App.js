@@ -5,7 +5,7 @@ import SignIn from './components/SignIn'
 import MapDisplay from './containers/MapDisplay'
 import {Route, Switch, Redirect} from 'react-router-dom'
 import Navbar from './containers/Navbar'
-import Home from './components/Home'
+import About from './components/About'
 
 const API = 'http://localhost:3001'
 
@@ -124,7 +124,7 @@ class App extends Component {
               )
             }} />
             <Route path="/" render={(props) => {
-              return (<Home
+              return (<About
                 current_user={this.state.current_user}
                 />
               )
@@ -135,7 +135,7 @@ class App extends Component {
         <div>
           <Navbar current_user={this.state.current_user}/>
           <Switch>
-            <Route path="/home" component={Home}/>
+            <Route path="/about" component={About}/>
             <Route path="/" render={(props) => {
               return (<SignIn
                 username={this.state.username}
