@@ -23,6 +23,13 @@ class App extends Component {
     }
   }
 
+  updateCurrentUserState = (updatedUser) => {
+    this.setState({
+      current_user: {...this.state.current_user, user_courts: [updatedUser.user_courts]}
+    })
+  }
+
+
 ///// checks if user is already checked in at a court and if so returns true and passes it down as a props
 ///// to CourtCard where courtCard utilizes it in onCheckInClick(line 87)
 ///// filter creates a new array with all elements that pass the test
@@ -121,6 +128,7 @@ class App extends Component {
                 allPlayers={this.state.allPlayers}
                 current_user={this.state.current_user}
                 allCourts={this.state.allCourts}
+                updateCurrentUserState={this.updateCurrentUserState}
                 />
               )
             }} />

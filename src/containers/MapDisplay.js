@@ -84,6 +84,7 @@ class MapDisplay extends React.Component {
       <div className="featureCard">
         {this.state.courtDetails.name ?
           <CourtCard
+            updateCurrentUserState={this.props.updateCurrentUserState}
             current_user={this.props.current_user}
             featureToShow={this.state.courtDetails}
             clearFeature={this.handleClearCourt}

@@ -73,8 +73,12 @@ class CourtCard extends React.Component {
         court_id: location.id
       })
     })
+    .then(res => res.json())
+    .then(updatedUser => {
+      this.props.updateCurrentUserState(updatedUser)
+    })
     let copyOfState = this.state.players
-    copyOfState.push(user)
+    copyOfState.unshift(user)
     this.setState({
       players: copyOfState
     })
@@ -135,8 +139,6 @@ onCheckOutClick = (e) => {
   if (checkCourt) {
     console.log(this.props.featureToShow)
     this.checkOutLocation(this.props.featureToShow, this.props.current_user)
-  } else {
-    alert("Already checked out!")
   }
 }
 /////
