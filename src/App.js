@@ -6,6 +6,7 @@ import MapDisplay from './containers/MapDisplay'
 import {Route, Switch, Redirect} from 'react-router-dom'
 import Navbar from './containers/Navbar'
 import About from './components/About'
+import SignUp from './components/SignUp'
 
 const API = 'http://localhost:3001'
 

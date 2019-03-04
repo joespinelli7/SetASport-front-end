@@ -11,6 +11,9 @@ import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import StarIcon from '@material-ui/icons/Star';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+import './CourtCard.css'
 import classnames from 'classnames';
 
 const styles = theme => ({
@@ -150,11 +153,17 @@ onCheckOutClick = (e) => {
     // console.log(this.props)
     // console.log(this.props.current_user)
     let newArr = this.props.featureToShow.users.map(user => user.id)
+    let iconStyles = {
+      fontSize: '20px',
+    };
     return (
       <Card className={classes.card}>
         <CardContent>
-          <Typography variant="h5" component="h2">
+          <Typography variant="h5" component="h2" className="courtName">
             {this.props.featureToShow.name}
+            <IconButton>
+              <StarIcon style={iconStyles} color="secondary" className={classes.title} />
+            </IconButton>
           </Typography>
           <Typography className={classes.pos} color="textSecondary">
             Address:
