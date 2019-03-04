@@ -24,7 +24,7 @@ class App extends Component {
   }
 
 ///// checks if user is already checked in at a court and if so returns true and passes it down as a props
-///// to CourtCard where courtCard utilizes it in onCheckInClick(line 86)
+///// to CourtCard where courtCard utilizes it in onCheckInClick(line 87)
 ///// filter creates a new array with all elements that pass the test
   checkIfAtCourt = () => {
     const courts = this.state.allCourts.filter(court => {

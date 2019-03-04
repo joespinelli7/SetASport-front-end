@@ -54,7 +54,7 @@ class SignIn extends React.Component {
     return (
       <main id="signin" className={classes.main}>
       <header>
-        <video loop muted autoPlay playsinline poster="https://zippy.gfycat.com/PalatableMadeupDrake.webm">
+        <video loop muted autoPlay playsInline poster="https://zippy.gfycat.com/PalatableMadeupDrake.webm">
           <source src="https://zippy.gfycat.com/PalatableMadeupDrake.webm" type="video/mp4"/>
         </video>
       </header>

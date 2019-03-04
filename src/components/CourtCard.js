@@ -54,14 +54,14 @@ class CourtCard extends React.Component {
   constructor(props) {
     super(props)
     this.state={
-      players: props.featureToShow
+      players: props.featureToShow.users
     }
   }
 
 /////checks user into a location by sending POST fetch to backend and creating a new user instance
 /////inside that specific court if the user isn't already checked into another location
   checkinLocation = (location, user) => {
-    console.log(location, user)
+
     fetch('http://localhost:3001/user_courts', {
       method: "POST",
       headers: {
@@ -73,11 +73,10 @@ class CourtCard extends React.Component {
         court_id: location.id
       })
     })
-    .then(res => res.json())
-    .then(playerAdded => {
-      this.setState({
-        players: location.users.push(user)
-      })
+    let copyOfState = this.state.players
+    copyOfState.push(user)
+    this.setState({
+      players: copyOfState
     })
   }
 /////
@@ -95,10 +94,59 @@ class CourtCard extends React.Component {
   }
 /////
 
+/////checks user out of a location by sending DELETE fetch to backend and deleting user instance
+/////inside that specific court
+// find out how to pick out specfic /user_courts/:id url for the player
+  checkOutLocation = (location, user) => {
+    fetch(`http://localhost:3001/user_courts/${user.user_courts[0].id}`, {
+      method: "DELETE"
+    })
+    let copyOfState = this.state.players
+    let index = copyOfState.findIndex(player => player.id === user.id)
+    copyOfState.splice(index, 1)
+    this.setState({
+      players: copyOfState
+    })
+  }
+/////
+
+// .then(res => res.json())
+// .then(playerDeleted => {
+//   debugger
+
+// console.log(location, user)
+// fetch(`http://localhost:3001/user_courts/${user.user_courts[0].id}`, {
+//   method: "DELETE"
+// })
+// .then(res => res.json())
+// .then(playerDeleted => {
+// console.log(playerDeleted)
+//   this.setState({
+//     players: location.users.filter(player => {
+//       debugger
+//     })
+//   })
+// })
+
+/////onClick of check out btn checks user out of that specific court
+onCheckOutClick = (e) => {
+  e.preventDefault()
+  let checkCourt = this.props.checkIfAtCourt()
+  if (checkCourt) {
+    console.log(this.props.featureToShow)
+    this.checkOutLocation(this.props.featureToShow, this.props.current_user)
+  } else {
+    alert("Already checked out!")
+  }
+}
+/////
+
   render() {
     const { classes } = this.props;
-    console.log(this.props.featureToShow.users)
-    console.log(this.props.current_user)
+    // console.log(this.props.featureToShow.users)
+    // console.log(this.props.current_user)
+    // console.log(this.props)
+    // console.log(this.props.current_user)
     let newArr = this.props.featureToShow.users.map(user => user.id)
     return (
       <Card className={classes.card}>
@@ -117,7 +165,7 @@ class CourtCard extends React.Component {
         <CardActions>
           <div>
           {newArr.includes(this.props.current_user.id) ?
-            <Button size="small" color="primary" onClick={this.onCheckInClick}>Check out</Button>
+            <Button size="small" color="primary" onClick={this.onCheckOutClick}>Check out</Button>
           :
             <Button size="small" color="primary" onClick={this.onCheckInClick}>Check in</Button>
           }
