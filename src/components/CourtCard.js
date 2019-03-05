@@ -166,9 +166,15 @@ onCheckOutClick = (e) => {
         <CardContent>
               <Typography variant="h5" component="h2" className="courtName">
                 {this.props.featureToShow.name}
-                <IconButton className={classes.star}>
-                  <StarIcon onClick={() => this.props.updateMyCourts(this.props.featureToShow)} style={iconStyles} color="secondary" className={classes.title} />
-                </IconButton>
+                { this.props.myCourts.includes(this.props.featureToShow) ?
+                  <IconButton className={classes.star}>
+                    <StarIcon onClick={() => this.props.updateMyCourts(this.props.featureToShow)} style={iconStyles} color="secondary" className={classes.title} />
+                  </IconButton>
+                  :
+                  <IconButton className={classes.star}>
+                    <StarBorderIcon onClick={() => this.props.updateMyCourts(this.props.featureToShow)} style={iconStyles} color="secondary" className={classes.title} />
+                  </IconButton>
+                }
               </Typography>
           <Typography className={classes.pos} color="textSecondary">
             Address:

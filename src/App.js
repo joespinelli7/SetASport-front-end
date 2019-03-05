@@ -37,7 +37,12 @@ class App extends Component {
         myCourts: [...this.state.myCourts, courtObj]
       })
     } else {
-      alert("Already favorited!")
+      let copyOfState = this.state.myCourts
+      let index = copyOfState.findIndex(court => court.id === courtObj.id)
+      copyOfState.splice(index, 1)
+      this.setState({
+        myCourts: copyOfState
+      })
     }
   }
 
