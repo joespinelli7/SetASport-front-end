@@ -69,6 +69,12 @@ class MapDisplay extends React.Component {
   }
 /////
 
+  exitCard = () => {
+    this.setState({
+      courtDetails: {}
+    })
+  }
+
   render() {
     return(
       <Map
@@ -80,6 +86,7 @@ class MapDisplay extends React.Component {
         }}
         center={this.state.center}
         zoom={this.state.zoom}
+        onClick={this.exitCard}
       >
       <div className="featureCard">
         {this.state.courtDetails.name ?
@@ -111,8 +118,6 @@ class MapDisplay extends React.Component {
             onClick={() =>
               {this.handleOnClick(courtObj)}
             }
-            onMouseEnter={(courtObj) => this.changeHoverStateIn(courtObj)}
-            onMouseLeave={() => this.changeHoverStateOut()}
           />
         )}
       </Layer>

@@ -159,7 +159,7 @@ onCheckOutClick = (e) => {
     // console.log(this.props.current_user)
     let newArr = this.props.featureToShow.users.map(user => user.id)
     let iconStyles = {
-      fontSize: '20px',
+      fontSize: '25px',
     };
     return (
       <Card className={classes.card}>

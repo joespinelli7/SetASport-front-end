@@ -47,6 +47,11 @@ class MyCourts extends React.Component {
     const bull = <span className={classes.bullet}>•</span>;
     return (
       <div>
+      <header>
+      <video loop muted autoPlay playsInline poster="https://trustedpartner.azureedge.net/images/library/CalStateGames2015/Summer%20Games/Pickleball.JPG">
+        <source src="https://trustedpartner.azureedge.net/images/library/CalStateGames2015/Summer%20Games/Pickleball.JPG" type="video/mp4"/>
+      </video>
+      </header>
       <AppBar color="primary" position="static" color="default">
         <Toolbar>
           <Typography className="header" variant="h6" color="inherit">

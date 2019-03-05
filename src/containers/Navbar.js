@@ -10,6 +10,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import paddle from '../images/paddle.png'
 import {Link} from 'react-router-dom'
 import Divider from '@material-ui/core/Divider'
+import './Navbar.css'
+import { AwesomeButton } from "react-awesome-button";
+import AwesomeButtonStyles from "react-awesome-button/src/styles/styles.scss";
 
 const styles = {
   root: {
@@ -30,12 +33,14 @@ function Navbar(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <img src={paddle} alt="logo" />
-          <h3>SetASport</h3>
+          <Button component={Link} color="inherit" to="/about">
+            <img src={paddle} alt="logo" />
+            <h3>SetASport</h3>
+          </Button>
           <Typography variant="h6" color="inherit" className={classes.grow}>
-            <Button component={Link} color="inherit" to="/about">
-              About
-            </Button>
+          <Button component={Link} color="inherit" to="/about">
+            About
+          </Button>
             { props.current_user ?
                 <Button component={Link} color="inherit" to="/map">
                   Map
@@ -67,6 +72,17 @@ Navbar.propTypes = {
 };
 
 export default withStyles(styles)(Navbar);
+
+//about link:
+// <Link to={'/about'}>
+//   <AwesomeButton
+//     className="aws-btn"
+//     type="primary"
+//     ripple
+//   >
+//     About
+//   </AwesomeButton>
+// </Link>
 
 // <Typography variant="h4" color="inherit" className={classes.grow}>
 //   <Button color="inherit"><Link to="/">Home</Link></Button>
