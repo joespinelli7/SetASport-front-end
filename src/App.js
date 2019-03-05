@@ -7,6 +7,7 @@ import {Route, Switch, Redirect} from 'react-router-dom'
 import Navbar from './containers/Navbar'
 import About from './components/About'
 import SignUp from './components/SignUp'
+import MyCourts from './containers/MyCourts'
 
 const API = 'http://localhost:3001'
 
@@ -15,7 +16,7 @@ class App extends Component {
     super(props)
 
     this.state={
-      myFavCourts: [],
+      myCourts: [],
       allCourts: [],
       current_user: null,
       allPlayers: [],
@@ -30,6 +31,15 @@ class App extends Component {
     })
   }
 
+  updateMyCourts = (courtObj) => {
+    if (!this.state.myCourts.includes(courtObj)){
+      this.setState({
+        myCourts: [...this.state.myCourts, courtObj]
+      })
+    } else {
+      alert("Already favorited!")
+    }
+  }
 
 ///// checks if user is already checked in at a court and if so returns true and passes it down as a props
 ///// to CourtCard where courtCard utilizes it in onCheckInClick(line 87)
@@ -125,11 +135,20 @@ class App extends Component {
           <Switch>
             <Route path="/map" render={(props) => {
               return (<MapDisplay
+                updateMyCourts={this.updateMyCourts}
+                myCourts={this.state.myCourts}
                 checkIfAtCourt={this.checkIfAtCourt}
                 allPlayers={this.state.allPlayers}
                 current_user={this.state.current_user}
                 allCourts={this.state.allCourts}
                 updateCurrentUserState={this.updateCurrentUserState}
+                />
+              )
+            }} />
+            <Route path="/mycourts" render={() => {
+              return(
+                <MyCourts
+                myCourts={this.state.myCourts}
                 />
               )
             }} />

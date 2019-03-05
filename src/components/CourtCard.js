@@ -13,6 +13,7 @@ import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
+import Grid from '@material-ui/core/Grid';
 import './CourtCard.css'
 import classnames from 'classnames';
 
@@ -44,6 +45,10 @@ const styles = theme => ({
   expandOpen: {
     transform: 'rotate(90deg)',
   },
+  star: {
+    zIndex: 100,
+    position: 'absolute',
+  }
 });
 
 // (location.users.includes(location.current_user) ?
@@ -159,12 +164,12 @@ onCheckOutClick = (e) => {
     return (
       <Card className={classes.card}>
         <CardContent>
-          <Typography variant="h5" component="h2" className="courtName">
-            {this.props.featureToShow.name}
-            <IconButton>
-              <StarIcon style={iconStyles} color="secondary" className={classes.title} />
-            </IconButton>
-          </Typography>
+              <Typography variant="h5" component="h2" className="courtName">
+                {this.props.featureToShow.name}
+                <IconButton className={classes.star}>
+                  <StarIcon onClick={() => this.props.updateMyCourts(this.props.featureToShow)} style={iconStyles} color="secondary" className={classes.title} />
+                </IconButton>
+              </Typography>
           <Typography className={classes.pos} color="textSecondary">
             Address:
           </Typography>
