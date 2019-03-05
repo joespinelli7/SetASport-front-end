@@ -153,7 +153,13 @@ class App extends Component {
             <Route path="/mycourts" render={() => {
               return(
                 <MyCourts
+                updateMyCourts={this.updateMyCourts}
                 myCourts={this.state.myCourts}
+                checkIfAtCourt={this.checkIfAtCourt}
+                allPlayers={this.state.allPlayers}
+                current_user={this.state.current_user}
+                allCourts={this.state.allCourts}
+                updateCurrentUserState={this.updateCurrentUserState}
                 />
               )
             }} />
