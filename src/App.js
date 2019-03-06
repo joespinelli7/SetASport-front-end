@@ -43,11 +43,8 @@ class App extends Component {
         court_id: courtObj.id
       })
     })
-    .then(res => res.json())
-    .then(data => {
-      this.setState({
-        myCourts: [...this.state.myCourts, data]
-      })
+    this.setState({
+      myCourts: [...this.state.myCourts, courtObj]
     })
   }
 
@@ -99,13 +96,6 @@ class App extends Component {
         allPlayers: usersArr
       })
     })
-    fetch(`${API}/favorite_courts`)
-    .then(res => res.json())
-    .then(favCourts => {
-      this.setState({
-        myCourts: favCourts
-      })
-    })
   }
 /////
 
@@ -142,7 +132,8 @@ class App extends Component {
         alert("Username/password combination does not exist!")
       } else {
         this.setState({
-          current_user: player
+          current_user: player,
+          myCourts: player.my_courts
         })
       }
     })

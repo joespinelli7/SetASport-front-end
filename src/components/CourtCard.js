@@ -161,13 +161,15 @@ onCheckOutClick = (e) => {
     let iconStyles = {
       fontSize: '25px',
     };
-    console.log(this.props.current_user)
+    console.log(this.props.myCourts)
+    let map = this.props.myCourts.map(court => court.id)
+    console.log(map.includes(this.props.featureToShow.id))
     return (
       <Card className={classes.card}>
         <CardContent>
               <Typography variant="h5" component="h2" className="courtName">
                 {this.props.featureToShow.name}
-                { this.props.myCourts.includes(this.props.featureToShow) ?
+                { map.includes(this.props.featureToShow.id) ?
                   <IconButton className={classes.star}>
                     <StarIcon onClick={() => console.log(this.props.featureToShow, this.props.current_user)} style={iconStyles} color="secondary" className={classes.title} />
                   </IconButton>
