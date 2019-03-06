@@ -8,6 +8,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import MyCourtCard from '../components/MyCourtCard'
+import CourtCard from '../components/CourtCard'
 
 const styles = {
   card: {
@@ -59,31 +61,9 @@ class MyCourts extends React.Component {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Card className={classes.card}>
-        <CardContent>
-          <Typography className={classes.title} color="textSecondary" gutterBottom>
-            Word of the Day
-          </Typography>
-          <Typography variant="h5" component="h2">
-            be
-            {bull}
-            nev
-            {bull}o{bull}
-            lent
-          </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            adjective
-          </Typography>
-          <Typography component="p">
-            well meaning and kindly.
-            <br />
-            {'"a benevolent smile"'}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small">Learn More</Button>
-        </CardActions>
-      </Card>
+      {this.props.myCourts.map(courtObj =>
+       <MyCourtCard courtObj={courtObj}/>
+      )}
       </div>
     );
   }

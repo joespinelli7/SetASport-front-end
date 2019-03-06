@@ -54,6 +54,8 @@ class App extends Component {
   }
 /////
 
+///// Sends DELETE fetch to backend using custom route to find_by user_id and
+///// court_id and delete that instance from favorite_courts table
   unFavCourt = (courtObj, current_user) => {
     console.log(courtObj, current_user)
     fetch(`http://localhost:3001/favorite_courts/${courtObj.id}/${current_user.id}`, {
@@ -66,6 +68,7 @@ class App extends Component {
       myCourts: copyOfState
     })
   }
+/////
 
     // if (!this.state.myCourts.includes(courtObj)){
     //   this.setState({
@@ -190,6 +193,8 @@ class App extends Component {
             <Route path="/mycourts" render={() => {
               return(
                 <MyCourts
+                favCourt={this.favCourt}
+                unFavCourt={this.unFavCourt}
                 updateMyCourts={this.updateMyCourts}
                 myCourts={this.state.myCourts}
                 checkIfAtCourt={this.checkIfAtCourt}

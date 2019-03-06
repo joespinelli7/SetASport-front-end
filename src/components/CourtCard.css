@@ -1,3 +1,12 @@
 .courtName {
   text-align: center;
 }
+
+.myCourtName {
+  position:relative;
+ top:50%;
+ left:33.5%;
+ margin-top:1px;
+ margin-left:-100px;
+ margin:0 40px 40px 0;
+}

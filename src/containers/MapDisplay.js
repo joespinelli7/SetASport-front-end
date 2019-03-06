@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import CourtCard from '../components/CourtCard'
 import './MapDisplay.css';
 import CourtName from '../components/CourtName'
+import MyCourts from './MyCourts'
 
 const Map = ReactMapboxGl({
    accessToken: process.env.REACT_APP_SETASPORT_ACCESS_KEY
@@ -92,6 +93,7 @@ class MapDisplay extends React.Component {
       >
       <div className="featureCard">
         {this.state.courtDetails.name ?
+          <div>
           <CourtCard
             unFavCourt={this.props.unFavCourt}
             favCourt={this.props.favCourt}
@@ -104,6 +106,7 @@ class MapDisplay extends React.Component {
             handleExpandClick={this.handleExpandClick}
             checkIfAtCourt={this.props.checkIfAtCourt}
           />
+          </div>
           :
           null
         }
