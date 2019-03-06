@@ -69,11 +69,13 @@ class MapDisplay extends React.Component {
   }
 /////
 
+/////on click anywhere outside of the card, card closes
   exitCard = () => {
     this.setState({
       courtDetails: {}
     })
   }
+/////
 
   render() {
     return(

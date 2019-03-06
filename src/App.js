@@ -25,12 +25,17 @@ class App extends Component {
     }
   }
 
+///// updates current_user state to accurately reflect
+///// user_courts element upon checking in
   updateCurrentUserState = (updatedUser) => {
     this.setState({
       current_user: {...this.state.current_user, user_courts: [updatedUser.user_courts]}
     })
   }
+/////
 
+/////favorites a court by sending POST request to backend and sets
+///// myCourts state to have an array of all liked court objects
   favCourt = (courtObj, current_user) => {
     fetch(`${API}/favorite_courts`, {
       method: "POST",
@@ -47,6 +52,7 @@ class App extends Component {
       myCourts: [...this.state.myCourts, courtObj]
     })
   }
+/////
 
     // if (!this.state.myCourts.includes(courtObj)){
     //   this.setState({
