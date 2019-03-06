@@ -16,6 +16,7 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import Grid from '@material-ui/core/Grid';
 import classnames from 'classnames';
 import './CourtCard.css'
+import {Route, Switch, Redirect, Link} from 'react-router-dom'
 
 const styles = theme => ({
   card: {
@@ -60,6 +61,10 @@ const styles = theme => ({
 
 class MyCourtCard extends React.Component {
 
+  goToLocation = (longitude, latitude) => {
+    console.log(longitude, latitude)
+  }
+
   render() {
     const { classes } = this.props;
     // console.log(this.props.courtObj)
@@ -87,7 +92,7 @@ class MyCourtCard extends React.Component {
         </CardContent>
         <Divider />
         <div className="courtName">
-        <Button size="small" color="primary" onClick={() => console.log('clicked')}>Go to location on map</Button>
+          <Button size="small" color="primary" onClick={() => this.goToLocation(this.props.courtObj.longitude, this.props.courtObj.latitude)}>Go to location on map</Button>
         </div>
       </Card>
       </div>

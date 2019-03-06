@@ -62,7 +62,7 @@ class MyCourts extends React.Component {
         </Toolbar>
       </AppBar>
       {this.props.myCourts.map(courtObj =>
-       <MyCourtCard courtObj={courtObj}/>
+       <MyCourtCard key={courtObj.id} courtObj={courtObj}/>
       )}
       </div>
     );
