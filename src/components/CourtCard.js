@@ -161,6 +161,7 @@ onCheckOutClick = (e) => {
     let iconStyles = {
       fontSize: '25px',
     };
+    console.log(this.props.current_user)
     return (
       <Card className={classes.card}>
         <CardContent>
@@ -168,11 +169,11 @@ onCheckOutClick = (e) => {
                 {this.props.featureToShow.name}
                 { this.props.myCourts.includes(this.props.featureToShow) ?
                   <IconButton className={classes.star}>
-                    <StarIcon onClick={() => this.props.updateMyCourts(this.props.featureToShow)} style={iconStyles} color="secondary" className={classes.title} />
+                    <StarIcon onClick={() => console.log(this.props.featureToShow, this.props.current_user)} style={iconStyles} color="secondary" className={classes.title} />
                   </IconButton>
                   :
                   <IconButton className={classes.star}>
-                    <StarBorderIcon onClick={() => this.props.updateMyCourts(this.props.featureToShow)} style={iconStyles} color="secondary" className={classes.title} />
+                    <StarBorderIcon onClick={() => this.props.favCourt(this.props.featureToShow, this.props.current_user)} style={iconStyles} color="secondary" className={classes.title} />
                   </IconButton>
                 }
               </Typography>

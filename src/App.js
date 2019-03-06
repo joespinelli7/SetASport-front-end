@@ -31,20 +31,39 @@ class App extends Component {
     })
   }
 
-  updateMyCourts = (courtObj) => {
-    if (!this.state.myCourts.includes(courtObj)){
-      this.setState({
-        myCourts: [...this.state.myCourts, courtObj]
+  favCourt = (courtObj, current_user) => {
+    fetch(`${API}/favorite_courts`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        user_id: current_user.id,
+        court_id: courtObj.id
       })
-    } else {
-      let copyOfState = this.state.myCourts
-      let index = copyOfState.findIndex(court => court.id === courtObj.id)
-      copyOfState.splice(index, 1)
+    })
+    .then(res => res.json())
+    .then(data => {
       this.setState({
-        myCourts: copyOfState
+        myCourts: [...this.state.myCourts, data]
       })
-    }
+    })
   }
+
+    // if (!this.state.myCourts.includes(courtObj)){
+    //   this.setState({
+    //     myCourts: [...this.state.myCourts, courtObj]
+    //   })
+    // } else {
+    //   let copyOfState = this.state.myCourts
+    //   let index = copyOfState.findIndex(court => court.id === courtObj.id)
+    //   copyOfState.splice(index, 1)
+    //   this.setState({
+    //     myCourts: copyOfState
+    //   })
+    // }
+
 
 ///// checks if user is already checked in at a court and if so returns true and passes it down as a props
 ///// to CourtCard where courtCard utilizes it in onCheckInClick(line 87)
@@ -78,6 +97,13 @@ class App extends Component {
     .then(usersArr => {
       this.setState({
         allPlayers: usersArr
+      })
+    })
+    fetch(`${API}/favorite_courts`)
+    .then(res => res.json())
+    .then(favCourts => {
+      this.setState({
+        myCourts: favCourts
       })
     })
   }
@@ -140,7 +166,7 @@ class App extends Component {
           <Switch>
             <Route path="/map" render={(props) => {
               return (<MapDisplay
-                updateMyCourts={this.updateMyCourts}
+                favCourt={this.favCourt}
                 myCourts={this.state.myCourts}
                 checkIfAtCourt={this.checkIfAtCourt}
                 allPlayers={this.state.allPlayers}
