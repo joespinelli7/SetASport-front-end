@@ -54,6 +54,19 @@ class App extends Component {
   }
 /////
 
+  unFavCourt = (courtObj, current_user) => {
+    console.log(courtObj, current_user)
+    fetch(`http://localhost:3001/favorite_courts/${courtObj.id}/${current_user.id}`, {
+      method: "DELETE"
+    })
+    let copyOfState = this.state.myCourts
+    let index = copyOfState.findIndex(court => court.id === courtObj.id)
+    copyOfState.splice(index, 1)
+    this.setState({
+      myCourts: copyOfState
+    })
+  }
+
     // if (!this.state.myCourts.includes(courtObj)){
     //   this.setState({
     //     myCourts: [...this.state.myCourts, courtObj]
@@ -163,6 +176,7 @@ class App extends Component {
           <Switch>
             <Route path="/map" render={(props) => {
               return (<MapDisplay
+                unFavCourt={this.unFavCourt}
                 favCourt={this.favCourt}
                 myCourts={this.state.myCourts}
                 checkIfAtCourt={this.checkIfAtCourt}

@@ -171,7 +171,7 @@ onCheckOutClick = (e) => {
                 {this.props.featureToShow.name}
                 { map.includes(this.props.featureToShow.id) ?
                   <IconButton className={classes.star}>
-                    <StarIcon onClick={() => console.log(this.props.featureToShow, this.props.current_user)} style={iconStyles} color="secondary" className={classes.title} />
+                    <StarIcon onClick={() => this.props.unFavCourt(this.props.featureToShow, this.props.current_user)} style={iconStyles} color="secondary" className={classes.title} />
                   </IconButton>
                   :
                   <IconButton className={classes.star}>
