@@ -10,10 +10,8 @@ import Divider from '@material-ui/core/Divider';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import IconButton from '@material-ui/core/IconButton';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
-import Grid from '@material-ui/core/Grid';
 import './CourtCard.css'
 import classnames from 'classnames';
 

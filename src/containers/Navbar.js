@@ -73,6 +73,15 @@ Navbar.propTypes = {
 
 export default withStyles(styles)(Navbar);
 
+
+// <Link to="/about">
+// <a href="#" class="myButton">About</a>
+// </Link>
+
+// <AwesomeButton type="primary" class="aws-btn" component={Link} color="secondary" to="/about">
+//   About
+// </AwesomeButton>
+
 //about link:
 // <Link to={'/about'}>
 //   <AwesomeButton

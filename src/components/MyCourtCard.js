@@ -92,13 +92,19 @@ class MyCourtCard extends React.Component {
         </CardContent>
         <Divider />
         <div className="courtName">
-          <Button size="small" color="primary" onClick={() => this.goToLocation(this.props.courtObj.longitude, this.props.courtObj.latitude)}>Go to location on map</Button>
+          <Button size="small" color="primary" onClick={() => this.goToLocation(this.props.courtObj.longitude, this.props.courtObj.latitude)}><Link to="/map">Go to map</Link></Button>
         </div>
       </Card>
       </div>
     );
   }
 }
+
+// <Button size="small" color="primary" onClick={() => this.goToLocation(this.props.courtObj.longitude, this.props.courtObj.latitude)}>Go to location on map</Button>
+
+// <Link to="/map">
+//   Go to map
+// </Link>
 
 MyCourtCard.propTypes = {
   classes: PropTypes.object.isRequired,

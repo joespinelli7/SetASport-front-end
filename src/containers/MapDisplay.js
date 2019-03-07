@@ -1,17 +1,12 @@
 import React from 'react'
-import ReactMapboxGl, { Layer, Feature, Popup } from "react-mapbox-gl";
+import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 // import ReactMapGL, {Popup} from 'react-map-gl';
-import Button from '@material-ui/core/Button';
 import CourtCard from '../components/CourtCard'
 import './MapDisplay.css';
-import CourtName from '../components/CourtName'
-import MyCourts from './MyCourts'
 
 const Map = ReactMapboxGl({
    accessToken: process.env.REACT_APP_SETASPORT_ACCESS_KEY
 })
-
-const API = 'http://localhost:3001'
 
 class MapDisplay extends React.Component {
   constructor(props) {
