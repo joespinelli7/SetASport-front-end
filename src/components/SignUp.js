@@ -79,6 +79,10 @@ class SignIn extends React.Component {
               <InputLabel htmlFor="password">Password</InputLabel>
               <Input onChange={(e) => this.props.setPass(e)} name="password" type="password" id="password" autoComplete="current-password" />
             </FormControl>
+            <FormControl margin="normal" required fullWidth>
+              <InputLabel htmlFor="password">Re-Enter Password</InputLabel>
+              <Input onChange={(e) => this.props.setPass(e)} name="password" type="password" id="password" autoComplete="current-password" />
+            </FormControl>
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
@@ -90,9 +94,11 @@ class SignIn extends React.Component {
               color="primary"
               className={classes.submit}
             >
-            {this.props.current_user ? <Redirect to="/home" /> : null}
               Sign up
             </Button>
+            <div class="signup">
+              <h5>Back to <Link to="/signin">sign in!</Link></h5>
+            </div>
           </form>
         </Paper>
       </main>

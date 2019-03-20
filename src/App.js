@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import SignIn from './components/SignIn'
+import SignUp from './components/SignUp'
 import MapDisplay from './containers/MapDisplay'
 import {Route, Switch, Redirect} from 'react-router-dom'
 import Navbar from './containers/Navbar'
@@ -218,6 +219,7 @@ class App extends Component {
           <Navbar current_user={this.state.current_user}/>
           <Switch>
             <Route path="/about" component={About}/>
+            <Route path="/signup" component={SignUp}/>
             <Route path="/" render={(props) => {
               return (<SignIn
                 username={this.state.username}
@@ -238,36 +240,3 @@ class App extends Component {
 }
 
 export default App;
-
-// <Switch>
-//           <Route path="/napsites/:id" render={(props) => {
-//             let napIdInUrl = parseInt(props.match.params.id)
-//             let nap = this.state.allNaps.find(nap => nap.id === napIdInUrl)
-//             return (<NapDetails
-//               setSelectedNap={this.setSelectedNap}
-//               nap={nap}
-//               onStarClick={this.onStarClick}
-//               rating={this.state.rating}
-//               />
-//             )
-//           }} />
-//           <Route path="/mynaps" render={() => {
-//             return(
-//               <MyNapList
-//                 clickNap={this.handleRemoveNap}
-//                 setSelectedNap={this.setSelectedNap}
-//                 myNaps={this.state.myNaps}
-//               />
-//             )
-//           }} />
-//           <Route path="/napsites" render={() => {
-//             return (
-//               <NapList
-//                 napsArray={this.state.allNaps}
-//                 onSelectNap={this.onSelectNap}
-//                 setSelectedNap={this.setSelectedNap}
-//               />
-//             )
-//           }} />
-//           <Route component={Home}/>
-//         </Switch>

@@ -57,7 +57,7 @@ function Navbar(props) {
             }
           </Typography>
           { props.current_user ?
-            <Button component={Link} to="/" color="inherit" onClick={() => props.logout()}>Sign out</Button>
+            <Button component={Link} to="/signin" color="inherit" onClick={() => props.logout()}>Sign out</Button>
             :
             null
           }
