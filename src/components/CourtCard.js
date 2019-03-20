@@ -17,6 +17,7 @@ import classnames from 'classnames';
 
 const styles = theme => ({
   card: {
+    marginTop: 72.5,
     maxWidth: 500,
   },
   bullet: {

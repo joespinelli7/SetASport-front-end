@@ -30,8 +30,8 @@ const styles = {
 function Navbar(props) {
   const { classes } = props;
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
+    <div className={classes.root} id="nav">
+      <AppBar position="fixed">
         <Toolbar>
           <Button component={Link} color="inherit" to="/about">
             <img src={paddle} alt="logo" />
@@ -57,7 +57,7 @@ function Navbar(props) {
             }
           </Typography>
           { props.current_user ?
-            <Button color="inherit" onClick={() => props.logout()}>Sign out</Button>
+            <Button component={Link} to="/" color="inherit" onClick={() => props.logout()}>Sign out</Button>
             :
             null
           }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import SignIn from './components/SignIn'
 import MapDisplay from './containers/MapDisplay'
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, Redirect} from 'react-router-dom'
 import Navbar from './containers/Navbar'
 import About from './components/About'
 import MyCourts from './containers/MyCourts'
@@ -174,6 +174,7 @@ class App extends Component {
       { this.state.current_user ?
         <div>
           <Navbar current_user={this.state.current_user} logout={this.handleUserSignOut}/>
+          <Redirect to="/map" />
           <div id="widget" class="scorestream-widget-container" data-ss_widget_type="horzScoreboard" data-user-widget-id="28787"></div>
           <Switch>
             <Route path="/map" render={(props) => {
